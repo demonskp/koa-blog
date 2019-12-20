@@ -1,0 +1,32 @@
+{
+  "name": "koa-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc && pm2 start dist/index.js --name koa-test",
+    "stop": "pm2 stop koa-test",
+    "dev": "nodemon --watch ./src/**/* -e ts,tsx --exec ts-node ./src/index.ts",
+    "list": "pm2 list"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/koa-session": "^5.10.1",
+    "koa": "^2.11.0",
+    "koa-router": "^7.4.0",
+    "koa-session": "^5.12.3",
+    "koa-static": "^5.0.0",
+    "nunjucks": "^3.2.0"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.11.0",
+    "@types/koa-router": "^7.0.42",
+    "@types/koa-static": "^4.0.1",
+    "@types/node": "^12.12.17",
+    "nodemon": "^2.0.1",
+    "ts-node": "^8.5.4",
+    "typescript": "^3.7.3"
+  }
+}
