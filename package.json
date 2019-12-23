@@ -18,12 +18,14 @@
     "koa-router": "^7.4.0",
     "koa-session": "^5.12.3",
     "koa-static": "^5.0.0",
+    "markdown-it": "^10.0.0",
     "nunjucks": "^3.2.0"
   },
   "devDependencies": {
     "@types/koa": "^2.11.0",
     "@types/koa-router": "^7.0.42",
     "@types/koa-static": "^4.0.1",
+    "@types/markdown-it": "^0.0.9",
     "@types/node": "^12.12.17",
     "nodemon": "^2.0.1",
     "ts-node": "^8.5.4",

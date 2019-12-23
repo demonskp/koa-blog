@@ -23,6 +23,7 @@ function VerifyMid(verifyOption:VerifyOption) {
 function verifySession(ctx: Context, next: Next) {
     if (ctx.URL.pathname !== option.loginRoute) {
         if (ctx.session[option.sessionName]) {
+            ctx.isLogin = true;
             next();
         } else {
             ctx.response.redirect(option.loginRoute);

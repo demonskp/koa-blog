@@ -1,5 +1,4 @@
 import * as Koa from 'koa';
-import { userInfo } from 'os';
 
 export default {
     /**
