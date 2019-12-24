@@ -7,8 +7,6 @@ export default {
      */
     async hello(ctx:Koa.ParameterizedContext){
         ctx.body = 'sssssssssddaakkkdssssss';
-        ctx.session.username = "张三";
-        ctx.session.liwei = "liwei";
     },
 
     /**

@@ -21,8 +21,11 @@ function VerifyMid(verifyOption:VerifyOption) {
  * @param next Koa Next函数
  */
 function verifySession(ctx: Context, next: Next) {
-    if (ctx.URL.pathname !== option.loginRoute) {
+    const url = ctx.request.url;
+    const dirList = url.split('/');
+    if (dirList[1] === option.startPath) {
         if (ctx.session[option.sessionName]) {
+            console.log('aaaa');
             ctx.isLogin = true;
             next();
         } else {
@@ -39,9 +42,17 @@ function verifySession(ctx: Context, next: Next) {
 class VerifyOption {
     loginRoute:string;
     sessionName:string;
-    constructor(loginRoute:string,sessionName:string){
+    startPath:string;
+    /**
+     * 验证插件配置
+     * @param loginRoute 登录路由
+     * @param sessionName 会话名称
+     * @param startPath 权限验证路由开头
+     */
+    constructor(loginRoute:string,sessionName:string,startPath:string){
         this.loginRoute = loginRoute;
         this.sessionName = sessionName;
+        this.startPath = startPath;
     }
 }
 

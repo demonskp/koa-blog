@@ -8,7 +8,7 @@ function loadRouter(router:Router){
     router.get('/', HelloCtrl.hello);
     router.get('/user', HelloCtrl.user);
     router.get('/login', LoginCtrl.login);
-    router.get('/article', ArticleCtrl.getArticleHtml);
+    router.get('/back/article', ArticleCtrl.getArticleHtml);
 }
 
 export default {

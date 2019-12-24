@@ -34,7 +34,7 @@ app.use(Static(path.join(__dirname,'./public')));
 
 // 自定义中间件
 // 验证登录
-const verifyOption = new VerifyMid.VerifyOption('/login','username');
+const verifyOption = new VerifyMid.VerifyOption('/login','username','back');
 app.use(VerifyMid.VerifyMid(verifyOption));
 
 // 导入路由
