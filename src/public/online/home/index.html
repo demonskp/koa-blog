@@ -109,7 +109,7 @@
             openMubu() {
                 vm.showcenter = true;
                 anime({
-                    targets: '#root',
+                    targets: '.mubu',
                     translateY: "-100vh",
                     easing: "easeOutCubic",
                     complete:function(){
@@ -141,6 +141,7 @@
         justify-content: center;
         align-items: center;
         color: white;
+        position: fixed;
     }
 
     .svg {
