@@ -1,4 +1,5 @@
 import * as Koa from 'koa';
+import {logger} from '../utils/Logger';
 
 export default {
     /**
@@ -7,6 +8,10 @@ export default {
      */
     async hello(ctx:Koa.ParameterizedContext){
         ctx.body = 'sssssssssddaakkkdssssss';
+        logger.warn('aaaaa');
+        logger.info('------------------------------');
+        logger.error('error============');
+        logger.debug('ssssssssssssss');
     },
 
     /**

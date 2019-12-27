@@ -11,7 +11,7 @@ function loadRouter(router:Router){
     router.get('/back/article', ArticleCtrl.getArticleHtml);
 }
 
-export default {
+export {
     loadRouter,
 };
 

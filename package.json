@@ -15,6 +15,7 @@
   "dependencies": {
     "@types/koa-session": "^5.10.1",
     "koa": "^2.11.0",
+    "koa-log4": "^2.3.2",
     "koa-router": "^7.4.0",
     "koa-session": "^5.12.3",
     "koa-static": "^5.0.0",
@@ -23,6 +24,7 @@
   },
   "devDependencies": {
     "@types/koa": "^2.11.0",
+    "@types/koa-log4": "^2.3.1",
     "@types/koa-router": "^7.0.42",
     "@types/koa-static": "^4.0.1",
     "@types/markdown-it": "^0.0.9",
