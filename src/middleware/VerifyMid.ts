@@ -20,19 +20,19 @@ function VerifyMid(verifyOption:VerifyOption) {
  * @param ctx Koa上下文
  * @param next Koa Next函数
  */
-function verifySession(ctx: Context, next: Next) {
+async function verifySession(ctx: Context, next: Next) {
     const url = ctx.request.url;
     const dirList = url.split('/');
     if (dirList[1] === option.startPath) {
         if (ctx.session[option.sessionName]) {
             console.log('aaaa');
             ctx.isLogin = true;
-            next();
+            await next();
         } else {
             ctx.response.redirect(option.loginRoute);
         }
     } else {
-        next();
+        await next();
     }
 }
 

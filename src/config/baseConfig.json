@@ -1,4 +1,10 @@
 {
     "MarkDownPath":"mdDir",
-    "PublicPath":"public"
+    "PublicPath":"public",
+    "mysql":{
+        "HOST":"121.36.246.45",
+        "USERNAME":"root",
+        "PASSWORD":"information8082.",
+        "DBNAME":"myblog"
+    }
 }
