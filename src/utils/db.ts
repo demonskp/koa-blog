@@ -1,6 +1,6 @@
 import * as mysql from 'mysql';
 import { logger } from './Logger';
-var config = require('../config/baseConfig.json');
+import { config } from '../config/index';
 
 var pool = mysql.createPool({
     host: config.mysql.HOST,
@@ -57,6 +57,9 @@ class Mysql {
 
         return new Promise((resolve, reject) => {
             pool.getConnection((err, connection) => {
+                if(err){
+                    reject(err);
+                }
                 connection.beginTransaction(async err => {
                     if (err) {
                         throw new Error('start transaction Error');

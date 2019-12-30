@@ -12,7 +12,7 @@ export default {
      * @param ctx 上下文
      */
     async hello(ctx: Koa.ParameterizedContext) {
-        let sqls = ['select * from articls','select * from article_tag'];
+        let sqls = ['select * from article','select * from article_tag'];
         let params: any[] = [[],[]];
         ctx.body = "ssss";
         try {

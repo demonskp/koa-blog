@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "tsc && pm2 start dist/index.js --name koa-test",
     "stop": "pm2 stop koa-test",
-    "dev": "nodemon --watch ./src/**/* -e ts,tsx --exec ts-node ./src/index.ts",
+    "dev": "nodemon --watch ./src/**/* -e ts,tsx --exec ts-node ./src/index.ts development",
     "list": "pm2 list"
   },
   "author": "",

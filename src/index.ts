@@ -7,6 +7,7 @@ import {
   accessLogger,
   logger
 } from './utils/Logger';
+import {config} from './config/index';
 
 const app = new Koa();
 const router = new Router();
@@ -43,7 +44,7 @@ const CONFIG = {
 app.use(Session(CONFIG, app));
 
 // 设置静态文件目录
-app.use(Static(path.join(__dirname, './public')));
+app.use(Static(path.join(__dirname, './'+config.PublicPath)));
 
 // 日志记录
 app.use(accessLogger());
