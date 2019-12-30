@@ -59,9 +59,10 @@ loadRouter(router);
 
 app.use(router.routes());
 
-app.on('error', (err) => {
-  logger.error(err);
-});
+app.on('error', (err, ctx) =>{
+  logger.error("兜底：",err);
+	console.error(err);
+})
 
 app.listen(3000, () => {
   console.log('请访问:' + 'http://localhost:3000/');

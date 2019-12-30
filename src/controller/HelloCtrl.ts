@@ -14,7 +14,6 @@ export default {
     async hello(ctx: Koa.ParameterizedContext) {
         let sqls = ['select * from article','select * from article_tag'];
         let params: any[] = [[],[]];
-        ctx.body = "ssss";
         try {
             let results = await DB.transaction(sqls,params);
             ctx.body = {a:results};
