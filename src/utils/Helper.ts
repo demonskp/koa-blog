@@ -7,13 +7,12 @@ const md = new MarkdownIt();
 export default {
     /**
      * 获取错误消息
-     * @param code 错误代码
      * @param msg 错误消息
      * @param err 错误详情
      */
-    sendErrorResponse(code: string, msg: string, err ? : Error): Object {
+    sendErrorResponse(msg: string, err ? : Error): Object {
         return {
-            code,
+            code: "E",
             msg,
             err,
         }
@@ -26,7 +25,7 @@ export default {
      */
     sendSuccesResponse(msg: string, result: any): Object {
         return {
-            code: "0",
+            code: "S",
             msg,
             result
         }

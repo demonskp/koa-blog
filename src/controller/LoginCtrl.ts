@@ -7,7 +7,7 @@ export default {
             ctx.session.username = username;
             ctx.response.body = Helper.sendSuccesResponse('成功！',{});
         }else{
-            ctx.response.body = Helper.sendErrorResponse('1','密码错误');
+            ctx.response.body = Helper.sendErrorResponse('密码错误');
         }
     }
 }

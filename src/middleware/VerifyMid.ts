@@ -25,7 +25,6 @@ async function verifySession(ctx: Context, next: Next) {
     const dirList = url.split('/');
     if (dirList[1] === option.startPath) {
         if (ctx.session[option.sessionName]) {
-            console.log('aaaa');
             ctx.isLogin = true;
             await next();
         } else {
