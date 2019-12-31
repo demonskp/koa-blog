@@ -17,6 +17,7 @@ import VerifyMid from './middleware/VerifyMid';
 import {
   loadRouter
 } from './route/router';
+import ErrorDeal from './middleware/ErrorDeal';
 
 // 设置Session中间件
 app.keys = ["s2j21u.?2as21.asd;s"]; //密文
@@ -53,6 +54,8 @@ app.use(accessLogger());
 // 验证登录
 const verifyOption = new VerifyMid.VerifyOption('/login', 'username', 'back');
 app.use(VerifyMid.VerifyMid(verifyOption));
+// 错误处理
+app.use(ErrorDeal.ErrorDeal());
 
 // 导入路由
 loadRouter(router);
