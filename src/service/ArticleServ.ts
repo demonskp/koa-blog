@@ -26,8 +26,9 @@ export default {
             sql += ' and TITLE like ?';
             params.push(title);
         }
-        let result = await DB.query(sql,params);
+        let result:any = await DB.query(sql,params);
         return result;
-    }
+    },
+
 }
 

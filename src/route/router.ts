@@ -2,16 +2,20 @@ import Router = require("koa-router");
 import HelloCtrl from '../controller/HelloCtrl';
 import LoginCtrl from '../controller/LoginCtrl';
 import ArticleCtrl from "../controller/ArticleCtrl";
+import TagsCtrl from "../controller/TagsCtrl";
 
-function loadRouter(router:Router){
+function loadRouter(router: Router) {
     // 路由
     router.get('/', HelloCtrl.hello);
     router.get('/user', HelloCtrl.user);
     router.get('/login', LoginCtrl.login);
     router.get('/back/article', ArticleCtrl.getArticleHtml);
+
+    router.get('/hotTags', TagsCtrl.getAllTags);// 获取所有的Tags
+    router.get('/listArticle', ArticleCtrl.listArticle);// 获取某一类型的文章列表
+    router.get('/Article', ArticleCtrl.getArticleHtml);// 获取MarkDown文档
 }
 
 export {
     loadRouter,
 };
-
