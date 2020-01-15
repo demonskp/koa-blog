@@ -65,7 +65,13 @@
         </div>
         <div id="center" v-if="showcenter">
             <div class="pan">
-                {{message}}
+                <div id="header-div">
+                    <div style="width: 250px;height: 270px;">
+                        <div id="header-pic"></div>
+                    </div>
+                    
+
+                </div>
             </div>
         </div>
     </div>
@@ -78,7 +84,7 @@
         data: function () {
             return {
                 message: "hello",
-                showMubu:true,
+                showMubu: true,
                 showcenter: false
             }
         },
@@ -112,7 +118,7 @@
                     targets: '.mubu',
                     translateY: "-100vh",
                     easing: "easeOutCubic",
-                    complete:function(){
+                    complete: function () {
                         vm.showMubu = false;
                     }
                 });
@@ -133,6 +139,21 @@
         min-height: 100vh;
     }
 
+    #header-div {
+        width: 30%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    #header-pic {
+        width: 100%;
+        height: 100%;
+        background-image: url('./static/img/head.jpg');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+
     .mubu {
         width: 100vw;
         min-height: 100vh;
@@ -151,10 +172,8 @@
     .pan {
         width: 70vw;
         height: 50vh;
-        background-color: white;
+        background-color: rgba(255, 255, 255, 0.6);
         filter: alpha(Opacity=60);
-        -moz-opacity: 0.6;
-        opacity: 0.6;
         border-radius: 10px;
     }
 
