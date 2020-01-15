@@ -65,11 +65,15 @@
         </div>
         <div id="center" v-if="showcenter">
             <div class="pan">
-                <div id="header-div">
+                <div id="header-div" class="card">
                     <div style="width: 250px;height: 270px;">
                         <div id="header-pic"></div>
                     </div>
-                    
+                    <div>
+                        这是测试的说明
+                    </div>
+                </div>
+                <div class="app-pan">
 
                 </div>
             </div>
@@ -140,10 +144,17 @@
     }
 
     #header-div {
-        width: 30%;
+        max-width: 30%;
         height: 100%;
+        padding: 10px;
         display: flex;
         justify-content: center;
+    }
+
+    #app-pan {
+        width: 70%;
+        height: 100%;
+        display: flex;
     }
 
     #header-pic {
@@ -172,6 +183,9 @@
     .pan {
         width: 70vw;
         height: 50vh;
+    }
+
+    .card {
         background-color: rgba(255, 255, 255, 0.6);
         filter: alpha(Opacity=60);
         border-radius: 10px;
