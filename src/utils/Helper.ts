@@ -53,9 +53,9 @@ const md = new MarkdownIt();
      */
     getHeadArray(content: string) {
         //全局匹配所有的标题标签
-        var headRxg = new RegExp("(\\n)*<(H|h)[1-9] *id *= *\"(.*)\">(.*)</(H|h)[1-9]>", "g");
+        // var headRxg = new RegExp("(\\n)*<(H|h)[1-9] *id *= *\"(.*)\">(.*)</(H|h)[1-9]>", "g");
+        var headRxg = new RegExp("(\\n)*<(H|h)[1-9](.*)>(.*)</(H|h)[1-9]>", "g");
         var resultList = content.match(headRxg);
-        console.log(content);
         return resultList;
     }
 
@@ -67,9 +67,9 @@ const md = new MarkdownIt();
      */
     getHeadNode(headText: string) {
         //匹配head标签的级别，是h1或h2
-        var lvRxg = new RegExp("<(H|h)(.*) ");
+        var lvRxg = new RegExp("<(H|h)(.*)>");
         //匹配head标签的第一个属性""之中的东西
-        var idRxg = new RegExp("id=\"(.*)\"", "i");
+        var idRxg = new RegExp(">.*<", "i");
         //匹配head标签的名字
         var nameRxg = new RegExp(">(.*)<", "i");
         var result = {
@@ -77,6 +77,13 @@ const md = new MarkdownIt();
             id: "",
             name: ""
         };
+        // TODO 修改获取Node节点的犯法
+
+        // console.log(headText);
+        // console.log(headText.match(lvRxg));
+        // console.log(headText.match(idRxg));
+        // console.log(headText.match(nameRxg));
+
         result.lv = headText.match(lvRxg)[2];
         result.id = headText.match(idRxg)[1];
         result.name = headText.match(nameRxg)[1];
