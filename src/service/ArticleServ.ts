@@ -30,5 +30,31 @@ export default {
         return result;
     },
 
+    /**
+     * 获取文章所有TAG
+     * @param articleID 文章id
+     */
+    async getArticleTags(articleID:string) {
+        let sql =
+          `SELECT T.NAME,T.TYPE FROM article A
+            LEFT JOIN article_tag AT ON A.ID = AT.ARTICLE_ID
+            LEFT JOIN tag T ON AT.TAG_ID = T.ID
+            WHERE A.ID = ?`;
+        let parems = [articleID];
+        let result:any = await DB.query(sql,parems);
+        return result;
+      },
+    
+      /**
+       * 获取文章评论
+       * @param articleID 文章id
+       */
+    async getArticleCommend(articleID:string){
+        let sql = "SELECT ID,USER,TYPE,COMMENT,PRE_COMMENT_ID,DATE_FORMAT(DATETIME,'%Y-%m-%d') AS DATETIME FROM comment WHERE ARTICLE_ID = ? ORDER BY PRE_COMMENT_ID,DEEP"
+        let parems = [articleID];
+        let result:any = await DB.query(sql,parems);
+        return result;
+    }
+
 }
 

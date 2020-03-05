@@ -1,10 +1,9 @@
-import * as MarkdownIt from 'markdown-it';
+// markdown转html
+var marked = require('marked');
 import * as path from 'path';
 import * as fs from 'fs';
 
-const md = new MarkdownIt();
-
- class Helper {
+class Helper {
     /**
      * 获取错误消息
      * @param msg 错误消息
@@ -39,8 +38,8 @@ const md = new MarkdownIt();
     randerMarkdown(mdPath: string): string {
         try {
             var mdStr = fs.readFileSync(mdPath).toString();
-            var mdHtml = md.render(mdStr);
-            return mdHtml;
+            var str = marked(mdStr);
+            return str;
         } catch (error) {
             throw new Error(`无法渲染${mdPath}处的文档！`);
         }
@@ -53,8 +52,8 @@ const md = new MarkdownIt();
      */
     getHeadArray(content: string) {
         //全局匹配所有的标题标签
-        // var headRxg = new RegExp("(\\n)*<(H|h)[1-9] *id *= *\"(.*)\">(.*)</(H|h)[1-9]>", "g");
-        var headRxg = new RegExp("(\\n)*<(H|h)[1-9](.*)>(.*)</(H|h)[1-9]>", "g");
+        var headRxg = new RegExp("(\\n)*<(H|h)[1-9] *id *= *\"(.*)\">(.*)</(H|h)[1-9]>", "g");
+        // var headRxg = new RegExp("(\\n)*<(H|h)[1-9](.*)>(.*)</(H|h)[1-9]>", "g");
         var resultList = content.match(headRxg);
         return resultList;
     }
@@ -67,9 +66,9 @@ const md = new MarkdownIt();
      */
     getHeadNode(headText: string) {
         //匹配head标签的级别，是h1或h2
-        var lvRxg = new RegExp("<(H|h)(.*)>");
+        var lvRxg = new RegExp("<(H|h)(.*) ");
         //匹配head标签的第一个属性""之中的东西
-        var idRxg = new RegExp(">.*<", "i");
+        var idRxg = new RegExp("id=\"(.*)\"", "i");
         //匹配head标签的名字
         var nameRxg = new RegExp(">(.*)<", "i");
         var result = {
@@ -77,33 +76,26 @@ const md = new MarkdownIt();
             id: "",
             name: ""
         };
-        // TODO 修改获取Node节点的犯法
-
-        // console.log(headText);
-        // console.log(headText.match(lvRxg));
-        // console.log(headText.match(idRxg));
-        // console.log(headText.match(nameRxg));
-
         result.lv = headText.match(lvRxg)[2];
         result.id = headText.match(idRxg)[1];
         result.name = headText.match(nameRxg)[1];
         return result;
     }
     /**
-   *将一段文本中的标题全部提取成对象数组
-   *
-   * @param {string} content文本
-   * @returns标题对象数组
-   */
-  getHeadNodeList(content:string) {
-    var result = [];
-    var headArray = this.getHeadArray(content);
-    for (var i = 0; i < headArray.length; i++) {
-      var node = this.getHeadNode(headArray[i]);
-      result.push(node);
+     *将一段文本中的标题全部提取成对象数组
+     *
+     * @param {string} content文本
+     * @returns标题对象数组
+     */
+    getHeadNodeList(content: string) {
+        var result = [];
+        var headArray = this.getHeadArray(content);
+        for (var i = 0; i < headArray.length; i++) {
+            var node = this.getHeadNode(headArray[i]);
+            result.push(node);
+        }
+        return result;
     }
-    return result;
-  }
 }
 
 export default new Helper();

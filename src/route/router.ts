@@ -14,6 +14,8 @@ function loadRouter(router: Router) {
     router.get('/hotTags', TagsCtrl.getAllTags);// 获取所有的Tags
     router.get('/listArticle', ArticleCtrl.listArticle);// 获取某一类型的文章列表
     router.get('/Article', ArticleCtrl.getArticleHtml);// 获取MarkDown文档
+    router.get('/getArticleTags', ArticleCtrl.getArticleTags);// 获取文章所有标签
+    router.get('/getCommend', ArticleCtrl.getArticleCommend);// 获取文章所有评论
 }
 
 export {
