@@ -83,7 +83,7 @@ export default {
             if (!id) {
                 throw new Error('请先输入文章id！');
             }
-            let commendList = await ArticleServ.getArticleTags(id);
+            let commendList = await ArticleServ.getArticleCommend(id);
             console.log(commendList);
             // TODO 修改文章评论获取不了的问题
             let result = commendList2tree(commendList);
