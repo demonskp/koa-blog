@@ -66,6 +66,16 @@ export default {
         where art.TAG_ID = ?`;
         let result:any = await DB.query(sql,[tagID]);
         return result;
+    },
+
+    /**
+     * 搜索标题中包含某关键词的文章列表
+     * @param searchStr 搜索的字符串
+     */
+    async searchArticle(searchStr:string){
+        let sql = `select ID,WRITER,PRE_TEXT,TITLE,TYPE,DATE_TIME,READ_NUMBER,COMMENTS_NUMBER,W_FROM from article where TITLE like '%?%'`
+        let result:any = await DB.query(sql,[searchStr]);
+        return result;
     }
 
 }

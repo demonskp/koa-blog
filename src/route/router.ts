@@ -18,6 +18,7 @@ function loadRouter(router: Router) {
     router.get('/getCommend', ArticleCtrl.getArticleCommend);// 获取文章所有评论
 
     router.get('/ArticleByTag',ArticleCtrl.articleListFromTag);// 通过标签获取文章列表
+    router.get('/searchArticle',ArticleCtrl.searchArticle);// 搜索关键字获取文章列表
 }
 
 export {

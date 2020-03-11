@@ -85,7 +85,6 @@ export default {
             }
             let commendList = await ArticleServ.getArticleCommend(id);
             console.log(commendList);
-            // TODO 修改文章评论获取不了的问题
             let result = commendList2tree(commendList);
             console.log(result);
             ctx.body = Helper.sendSuccesResponse('获取成功', result);
@@ -110,6 +109,24 @@ export default {
         } catch (error) {
             console.log(error);
             ctx.body = Helper.sendErrorResponse('获取文章列表失败！', error);
+        }
+    },
+
+    /**
+     * 检索标题含有关键字文章列表
+     * @param ctx 
+     */
+    async searchArticle(ctx:Koa.ParameterizedContext){
+        let search = ctx.request.query.search;
+        try {
+            if(!search){
+                throw '搜索字符串不能为空';
+            }
+            let result = await ArticleServ.searchArticle(search);
+            ctx.body = Helper.sendSuccesResponse('获取成功', result);
+        } catch (error) {
+            console.log(error);
+            ctx.body = Helper.sendErrorResponse('检索文章列表失败！', error);
         }
     }
 }
