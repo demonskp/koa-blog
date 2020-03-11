@@ -94,6 +94,24 @@ export default {
             ctx.body = Helper.sendErrorResponse('获取文章评论失败', error);
         }
     },
+
+    /**
+     * 通过标签获取文章猎豹
+     * @param ctx 上下文信息
+     */
+    async articleListFromTag(ctx: Koa.ParameterizedContext) {
+        let id = ctx.request.query.TagID;// 标签ID
+        try {
+            if (!id) {
+                throw "未输入该标签ID";
+            }
+            let result = await ArticleServ.getArticleListFromTag(id);
+            ctx.body = Helper.sendSuccesResponse('获取成功', result);
+        } catch (error) {
+            console.log(error);
+            ctx.body = Helper.sendErrorResponse('获取文章列表失败！', error);
+        }
+    }
 }
 
 

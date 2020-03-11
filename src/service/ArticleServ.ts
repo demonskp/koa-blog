@@ -54,6 +54,18 @@ export default {
         let parems = [articleID];
         let result:any = await DB.query(sql,parems);
         return result;
+    },
+
+    /**
+     * 根据标签获取文章列表
+     * @param tagID 标签ID
+     */
+    async getArticleListFromTag(tagID:string){
+        let sql = `select ar.ID,ar.WRITER,ar.PRE_TEXT,ar.TITLE,ar.TYPE,ar.DATE_TIME,ar.READ_NUMBER,ar.COMMENTS_NUMBER,ar.W_FROM from article_tag art
+        left join article ar on art.ARTICLE_ID = ar.ID
+        where art.TAG_ID = ?`;
+        let result:any = await DB.query(sql,[tagID]);
+        return result;
     }
 
 }
