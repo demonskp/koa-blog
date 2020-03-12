@@ -84,9 +84,7 @@ export default {
                 throw new Error('请先输入文章id！');
             }
             let commendList = await ArticleServ.getArticleCommend(id);
-            console.log(commendList);
             let result = commendList2tree(commendList);
-            console.log(result);
             ctx.body = Helper.sendSuccesResponse('获取成功', result);
         } catch (error) {
             console.log(error);
