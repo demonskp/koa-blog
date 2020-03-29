@@ -16,6 +16,7 @@ function loadRouter(router: Router) {
     router.get('/Article', ArticleCtrl.getArticleHtml);// 获取MarkDown文档
     router.get('/getArticleTags', ArticleCtrl.getArticleTags);// 获取文章所有标签
     router.get('/getCommend', ArticleCtrl.getArticleCommend);// 获取文章所有评论
+    router.get('/addCommend', ArticleCtrl.addComment);// 为文章添加一条评论
 
     router.get('/ArticleByTag',ArticleCtrl.articleListFromTag);// 通过标签获取文章列表
     router.get('/searchArticle',ArticleCtrl.searchArticle);// 搜索关键字获取文章列表

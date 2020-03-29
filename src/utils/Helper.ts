@@ -96,6 +96,19 @@ class Helper {
         }
         return result;
     }
+
+    /**
+     * 判断所有参数是否都有
+     * @param  {...any} params 
+     */
+    isParamsFull(...params:any) {
+        for (let i = 0; i < params.length; i++) {
+            if (!params[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
 
 export default new Helper();

@@ -126,6 +126,30 @@ export default {
             console.log(error);
             ctx.body = Helper.sendErrorResponse('检索文章列表失败！', error);
         }
+    },
+
+    /**
+     * 为文章添加评论
+     * @param ctx 
+     */
+    async addComment(ctx:Koa.ParameterizedContext){
+        let {ID,type,preComment,user,comment} = ctx.request.query;
+        let articleId = ID;
+
+        if(!Helper.isParamsFull(ID,type)){
+            throw "参数不完整！";
+        }
+        let result;
+        if(type==='B'){
+            // 当评论类型为回复
+            let deep = await ArticleServ.getReplyDeep(articleId);
+            result = await ArticleServ.addReplyComment(articleId,preComment,user,comment,deep+"");
+            console.log(result);
+        }else{
+            result = await ArticleServ.addComment(articleId,user,comment);
+        }
+
+        ctx.body = Helper.sendSuccesResponse('获取成功', result);
     }
 }
 
