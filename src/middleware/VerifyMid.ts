@@ -4,13 +4,13 @@ import {
 } from "koa";
 
 // 设置
-let option:VerifyOption;
+let option: VerifyOption;
 
 /**
  * 验证中间件
  * @param verifyOption 验证设置
  */
-function VerifyMid(verifyOption:VerifyOption) {
+function VerifyMid(verifyOption: VerifyOption) {
     option = verifyOption;
     return verifySession;
 }
@@ -39,16 +39,16 @@ async function verifySession(ctx: Context, next: Next) {
  * 验证设置
  */
 class VerifyOption {
-    loginRoute:string;
-    sessionName:string;
-    startPath:string;
+    loginRoute: string;
+    sessionName: string;
+    startPath: string;
     /**
      * 验证插件配置
      * @param loginRoute 登录路由
      * @param sessionName 会话名称
      * @param startPath 权限验证路由开头
      */
-    constructor(loginRoute:string,sessionName:string,startPath:string){
+    constructor(loginRoute: string, sessionName: string, startPath: string) {
         this.loginRoute = loginRoute;
         this.sessionName = sessionName;
         this.startPath = startPath;
