@@ -19,7 +19,7 @@ export default {
             if (!artcleid) {
                 throw new Error('文章ID不能为空！');
             }
-            let artList: Array < any > = await ArticleServ.getArticleList(artcleid);
+            let artList: Array<any> = await ArticleServ.getArticleList(artcleid);
             if (artList.length == 0) {
                 throw new Error('未查询到任何数据');
             }
@@ -112,12 +112,12 @@ export default {
 
     /**
      * 检索标题含有关键字文章列表
-     * @param ctx 
+     * @param ctx
      */
-    async searchArticle(ctx:Koa.ParameterizedContext){
-        let search = ctx.request.query.search;
+    async searchArticle(ctx: Koa.ParameterizedContext) {
+        let { search } = ctx.request.query;
         try {
-            if(!search){
+            if (!search) {
                 throw '搜索字符串不能为空';
             }
             let result = await ArticleServ.searchArticle(search);
@@ -130,23 +130,23 @@ export default {
 
     /**
      * 为文章添加评论
-     * @param ctx 
+     * @param ctx
      */
-    async addComment(ctx:Koa.ParameterizedContext){
-        let {ID,type,preComment,user,comment} = ctx.request.query;
+    async addComment(ctx: Koa.ParameterizedContext) {
+        let { ID, type, preComment, user, comment } = ctx.request.query;
         let articleId = ID;
 
-        if(!Helper.isParamsFull(ID,type)){
+        if (!Helper.isParamsFull(ID, type)) {
             throw "参数不完整！";
         }
         let result;
-        if(type==='B'){
+        if (type === 'B') {
             // 当评论类型为回复
             let deep = await ArticleServ.getReplyDeep(articleId);
-            result = await ArticleServ.addReplyComment(articleId,preComment,user,comment,deep+"");
+            result = await ArticleServ.addReplyComment(articleId, preComment, user, comment, deep + "");
             console.log(result);
-        }else{
-            result = await ArticleServ.addComment(articleId,user,comment);
+        } else {
+            result = await ArticleServ.addComment(articleId, user, comment);
         }
 
         ctx.body = Helper.sendSuccesResponse('获取成功', result);
@@ -158,7 +158,7 @@ export default {
  * 文章评论列表转化为树形结构
  * @param data 评论数据list
  */
-function commendList2tree(data: Array < any > ) {
+function commendList2tree(data: Array<any>) {
     let commendList = [];
     let backCommendList = [];
     //为空返回
